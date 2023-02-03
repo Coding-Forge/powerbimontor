@@ -1,0 +1,12 @@
+{
+    "OutputPath": ".\\Data",  
+    "FullScanAfterDays": "30", 
+    "CatalogGetInfoParameters": "lineage=true&datasourceDetails=true&getArtifactUsers=true&datasetSchema=false&datasetExpressions=false",  
+    "CatalogGetModifiedParameters": "excludePersonalWorkspaces=false&excludeInActiveWorkspaces=true",
+    "ServicePrincipal": {
+        "AppId": "400340ad-c194-4287-afbe-37c04b0b31b0",
+        "AppSecret": "FsH8Q~AYVg-J6xio-725GCWKhSjkXmH2CHdpva7B",
+        "TenantId": "cf7df1e7-ae11-45e9-a012-6ff6e4479d22",
+        "Environment": "Public"
+    }
+}
