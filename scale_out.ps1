@@ -22,15 +22,15 @@ try
                       -Credential $credential
     Start-Sleep -Seconds 10
 
-    $subscription_id = "aeea5a13-27c4-40b5-b442-788b73f55a8a"
-    Update-AzConfig -DefaultSubscriptionForLogin "EDO-PROD"
+    $subscription_id = ""
+    Update-AzConfig -DefaultSubscriptionForLogin ""
 
     Set-AzContext -SubscriptionId $subscription_id
 
-    $plan = Get-AzAppServicePlan -ResourceGroupName "EDO-PBIMONITOR-001-P" -Name "FunctionAppEDOPBIMonitor001p"
+    $plan = Get-AzAppServicePlan -ResourceGroupName "" -Name ""
     Write-Host "APP service plan Name - " $plan.Sku.Name
     
-    Set-AzAppServicePlan -Name "FunctionAppEDOPBIMonitor001p" -ResourceGroupName "EDO-PBIMONITOR-001-P" -Tier "ElasticPremium" -WorkerSize "Large"
+    Set-AzAppServicePlan -Name "" -ResourceGroupName "" -Tier "ElasticPremium" -WorkerSize "Large"
     
     Start-Sleep -Seconds 30
 ### - End
@@ -57,18 +57,12 @@ catch {
     throw    
 }
 
-#Set-AzureAppServicePlan -ResourceGroupName "EDO-PBIMONITOR-001-P" -Name "FunctionAppEDOPBIMonitor001p" -Tier "ElasticPremium" -NumberofWorkers 1 -WorkerSize "Small"
+
 
 # scale down process - Begin
-Set-AzAppServicePlan -Name "FunctionAppEDOPBIMonitor001p" -ResourceGroupName "EDO-PBIMONITOR-001-P" -Tier "ElasticPremium" -WorkerSize "Small"
+Set-AzAppServicePlan -Name "" -ResourceGroupName "" -Tier "ElasticPremium" -WorkerSize "Small"
 ### - End
 
-
-
-From: Brandon Campbell <Brandon.Campbell@microsoft.com> 
-Sent: Wednesday, November 16, 2022 4:54 PM
-To: Lingisetty, Ramakrishna <ramakrishna.lingisetty@ecolab.com>
-Subject: Powershell script
 
 Caution: This email message originated from outside of the organization. DO NOT CLICK on links or open attachments unless you recognize the sender and know the content is safe. If you think it is suspicious, please report as suspicious. 
 
@@ -121,12 +115,12 @@ Get-AzContext -ListAvailable
 
 # El Loop while intenta autentificar 3 veces cada 30 segundos en caso que falle la primer conexion
 
-$subscription_id = "e338c313-35fd-4313-bb88-c4bd5b6e6c46"
+$subscription_id = ""
 
 ### this doesn't work
 Set-AzContext -Subscription $subscription_id
 
-$plan = Get-AzAppServicePlan -ResourceGroupName "codeforge-rg" -Name "testme"
+$plan = Get-AzAppServicePlan -ResourceGroupName "" -Name ""
 
 # imprime en consola la hora ajustada 
 
@@ -141,13 +135,13 @@ $sizeplan = $plan.Sku.Size
 
 if($sizeplan -eq "F1") {
 
- Set-AzAppServicePlan -Name "testme" -ResourceGroupName "codeforge-rg" -Tier "Standard"   -WorkerSize "Small"
+ Set-AzAppServicePlan -Name "" -ResourceGroupName "" -Tier "Standard"   -WorkerSize "Small"
   Write-Output $pant.Sku.Size
   Write-Output "entro f1"
 }
 if($sizeplan -eq "S1") {
 
-Set-AzAppServicePlan -Name 'testme' -ResourceGroupName 'codeforge-rg' -Tier Free -WorkerSize Small
+Set-AzAppServicePlan -Name '' -ResourceGroupName '' -Tier Free -WorkerSize Small
 Write-Output $pant.Sku.Size
  Write-Output "entro s"
 }
